@@ -1,11 +1,11 @@
 <%= form_for(book) do |f| %>
 	<div class="field row">
-		<%= f.label :title %>
+		<%= f.label :title, "Title" %>
 		<%= f.text_field :title, class: "col-xs-12 book_title" %>
 	</div>
 
 	<div class="field row">
-		<%= f.label :body %> <!-- ここを変更 -->
+		<%= f.label :body, "opinion" %> <!-- ここを変更 -->
 		<%= f.text_area :body, class: "col-xs-12 book_body" %>
 	</div>
 
