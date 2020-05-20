@@ -21,12 +21,32 @@
 					</td>
 					<td><%= link_to @book.title, @book %></td>
 					<td><%= @book.body %></td>
+					<td><%= @book.book_comments.count %></td>
 					<% if @book.user_id == current_user.id %>
 					<td><%= link_to "Edit",edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 					<td><%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
 					<% end %>
 				</tr>
-			</table>
+		</table>
+
+		<table>
+			<tr>
+				<% @book.book_comments.each do |book_comment| %>
+				<td></td>
+				<td><%= book_comment.comment %></td>
+				<td><%= link_to "Destroy",book_comment, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{book_comment.id}" %></td>
+				<% end %>
+			</tr>
+		</table>
+
+		<%= form_for [@book, @book_comment] do |f| %>
+
+		<%= f.text_area :comment, rows:'5', class: "form-control",placeholder:"コメントをここに" %>
+
+		<%= f.submit "送信する" %>
+
+
+		<% end %>
 
 	</div>
 </div>
