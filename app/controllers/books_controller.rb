@@ -9,7 +9,6 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
-    @Book = Book.find(params[:id])
   end
 
   def create
