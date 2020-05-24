@@ -34,12 +34,19 @@
           </ul>
         </nav>
 
-
       </div>
     </header>
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+
+      <div>
+        <%= form_tag(search_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= select_tag(:option, options_for_select([["user", "1"],["post","2"]]))%> 
+        <%= submit_tag '検索' %>
+        <% end %>
+      </div>
 
     <%= yield %>
 
