@@ -78,3 +78,5 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~>3.3.6'
 
 gem 'font-awesome-rails'
+
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
