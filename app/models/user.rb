@@ -15,6 +15,24 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
+  def User.search(search, user_or_post, how_search)
+    if user_or_post == "1"
+      if how_search == "1"
+        User.where(["name LIKE ?", "%#{search}%"])
+      elsif how_search == "2"
+        User.where(["name LIKE ?", "%#{search}"])
+      elsif how_search == "3"
+        User.where(["name LIKE ?", "#{search}%"])
+      elsif how_search == "4"
+        User.where(["name LIKE ?", "#{search}"])   
+      else
+        User.all
+      end
+    end
+  end
+
+  
+
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
