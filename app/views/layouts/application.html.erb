@@ -39,6 +39,7 @@
     <div class="container" style="padding: 30px;">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
 
+      <% if user_signed_in? %>
       <div class="row">
         <div class="col-xs-6 col-xs-offset-4">
           <div>
@@ -51,6 +52,8 @@
           </div>
         </div>
       </div>
+      <% else %>
+      <% end %>
 
     <%= yield %>
 
